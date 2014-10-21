@@ -19,7 +19,6 @@ import org.slf4j.LoggerFactory;
 @SessionScoped
 public class CalculatorService implements Serializable {
 
-    protected static final String ILLEGAL_ARGUMENT = "IllegalArgumentException";
     private final Logger logger = LoggerFactory.getLogger(CalculatorService.class);
     private JexlContext ctx;
 
@@ -67,15 +66,6 @@ public class CalculatorService implements Serializable {
             .replaceAll("\\}", ")")
             .replaceAll("\\[", "(")
             .replaceAll("\\]", ")");
-    }
-
-    /**
-     * Simple getter.
-     *
-     * @return Illegal argument String value
-     */
-    public static String getILLEGAL_ARGUMENT() {
-        return ILLEGAL_ARGUMENT;
     }
 
 }
