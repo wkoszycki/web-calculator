@@ -17,6 +17,9 @@ public class CalculatorValidator {
      * @return true if string is valid false otherwise
      */
     public static boolean isMathStringValid(String mathString) {
+        if (mathString == null) {
+            return false;
+        }
         return !REGEX_PATTERN.matcher(mathString).find();
     }
 
