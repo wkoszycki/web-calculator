@@ -26,7 +26,7 @@ public class CalculatorResourceTest {
         for (String positiveCase : TestUtil.positiveCases) {
             Response response = instance.calculate(positiveCase);
             assertEquals("httpStatus code differs:" + positiveCase,
-                201, response.getStatus());
+                200, response.getStatus());
         }
     }
 
@@ -35,7 +35,7 @@ public class CalculatorResourceTest {
         for (String negativeCase : TestUtil.negativeCases) {
             Response response = instance.calculate(negativeCase);
             assertEquals("httpStatus code differs:" + negativeCase,
-                401, response.getStatus());
+                400, response.getStatus());
         }
     }
 
