@@ -5,6 +5,7 @@ import com.cinemacity.calculator.service.CalculatorService;
 import javax.ws.rs.core.Response;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Before;
 
 /**
  *
@@ -15,6 +16,10 @@ public class CalculatorResourceTest {
     CalculatorResource instance;
 
     public CalculatorResourceTest() {
+    }
+
+    @Before
+    public void setUp() {
         this.instance = new CalculatorResource();
         CalculatorService calculatorService = new CalculatorService();
         calculatorService.init();
