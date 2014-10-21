@@ -3,6 +3,8 @@ package com.cinemacity.calculator.service;
 import com.cinemacity.calculator.exception.InvalidMathStringException;
 import com.cinemacity.calculator.validation.CalculatorValidator;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.script.ScriptEngine;
@@ -19,6 +21,7 @@ import org.slf4j.LoggerFactory;
 public class CalculatorService implements Serializable {
 
     private final Logger logger = LoggerFactory.getLogger(CalculatorService.class);
+    List<String> history;
 
     /**
      * Initializes this object.
@@ -26,6 +29,7 @@ public class CalculatorService implements Serializable {
     @PostConstruct
     public void init() {
         logger.info("Creating Calculation service");
+        history = new ArrayList<>();
     }
 
     /**
@@ -46,6 +50,7 @@ public class CalculatorService implements Serializable {
             ScriptEngineManager mgr = new ScriptEngineManager();
             ScriptEngine engine = mgr.getEngineByName("JavaScript");
             Double result = (Double) engine.eval(normalize(mathString));
+            history.add(mathString);
             if ((result == Math.floor(result)) && !Double.isInfinite(result)) {
                 return String.valueOf(result.intValue());
             }
@@ -68,6 +73,22 @@ public class CalculatorService implements Serializable {
             .replaceAll("\\}", ")")
             .replaceAll("\\[", "(")
             .replaceAll("\\]", ")");
+    }
+
+    /**
+     * Prints operations history.
+     *
+     * @return operations history with index, coma separated
+     */
+    public String printHistory() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < history.size(); i++) {
+            sb.append(i + 1)
+                .append(". ")
+                .append(history.get(i))
+                .append(" ,");
+        }
+        return sb.toString();
     }
 
 }

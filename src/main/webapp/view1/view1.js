@@ -20,7 +20,7 @@ angular.module('myApp.view1', ['ngRoute'])
                     SEPARATOR: {}
                 };
 
-                $scope.calculator = {expression: [0]};
+                $scope.calculator = {expression: [0], history: ''};
                 $scope.currentState = $scope.STATE_ENUM.INITIAL;
 
                 $scope.clickButton = function ($event) {
@@ -41,16 +41,26 @@ angular.module('myApp.view1', ['ngRoute'])
                         this.currentState = this.STATE_ENUM.SEPARATOR;
                     }
                 };
+                $scope.clickHistory = function ($event) {
+                    $http.get('/calculator-jetty/rs-api/calculator/v1.0/printHistory').
+                            success(function (data, status, headers, config) {
+                                $scope.calculator.history = data;
+                            }).
+                            error(function (data, status, headers, config) {
+                                console.log('negative response status:' + status + ' data: ' + data);
+                                $scope.calculator.history = 'Can\'t retrieve history from server';
+                            });
+                };
 
                 $scope.clickResult = function ($event) {
                     var mathExp = this.calculator.expression.join('');
-                                        console.log('math decoded' + mathExp);
-                    mathExp=encodeURIComponent(mathExp);
+                    console.log('math decoded' + mathExp);
+                    mathExp = encodeURIComponent(mathExp);
                     console.log('math encoded' + mathExp);
                     $http({
-                                 url: '/calculator-jetty/rs-api/calculator/v1.0/calculate',
+                        url: '/calculator-jetty/rs-api/calculator/v1.0/calculate',
                         method: 'POST',
-                        data: 'mathString=' + mathExp+'',
+                        data: 'mathString=' + mathExp + '',
                         headers: {
                             "Content-Type": "application/x-www-form-urlencoded"
                         }

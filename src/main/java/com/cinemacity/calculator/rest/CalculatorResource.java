@@ -5,6 +5,7 @@ import com.cinemacity.calculator.service.CalculatorService;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.FormParam;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
@@ -46,6 +47,20 @@ public class CalculatorResource {
         }
         return Response.status(httpStatusCode)
             .entity(result)
+            .type(MediaType.TEXT_PLAIN)
+            .build();
+    }
+
+    /**
+     * Prints history
+     *
+     * @return history string.
+     */
+    @GET
+    @Path("/printHistory")
+    public Response printHistory() {
+        return Response.status(200)
+            .entity(calculatorService.printHistory())
             .type(MediaType.TEXT_PLAIN)
             .build();
     }
