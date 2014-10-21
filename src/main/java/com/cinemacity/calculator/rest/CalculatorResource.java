@@ -1,5 +1,6 @@
 package com.cinemacity.calculator.rest;
 
+import com.cinemacity.calculator.exception.InvalidMathStringException;
 import com.cinemacity.calculator.service.CalculatorService;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -34,11 +35,17 @@ public class CalculatorResource {
     @POST
     @Path("/calculate")
     public Response calculate(@FormParam("mathString") String mathString) {
-        logger.info("got message at Form param:" + mathString);
-        String result = calculatorService.calculateString(mathString);
-        int httpStatusCode = CalculatorService.getILLEGAL_ARGUMENT().equals(result) ? 401 : 201;
+        String result;
+        int httpStatusCode = 200;
+        try {
+            logger.info("got message at Form param:" + mathString);
+            result = calculatorService.calculateString(mathString);
+        } catch (InvalidMathStringException ex) {
+            result = ex.getMessage();
+            httpStatusCode = 400;
+        }
         return Response.status(httpStatusCode)
-            .entity(String.valueOf(result))
+            .entity(result)
             .type(MediaType.TEXT_PLAIN)
             .build();
     }

@@ -1,5 +1,6 @@
 package com.cinemacity.calculator.service;
 
+import com.cinemacity.calculator.exception.InvalidMathStringException;
 import com.cinemacity.calculator.validation.CalculatorValidator;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
@@ -33,22 +34,23 @@ public class CalculatorService implements Serializable {
 
     /**
      * Calculates value from given math string. Throwing exception is expensive,
-     * so instead we will simply return String value.
+     * it could be optimized by simply return String value but: optimize only if
+     * needed.
      *
      * @param mathString mathematical string
-     * @return IllegalArgumentException when math String is not correct or when
-     * JexlException occurs otherwise calculated value
+     * @return calculated value
+     * @throws com.cinemacity.calculator.exception.InvalidMathStringException
+     * when mathematical expression is invalid
      */
-    public String calculateString(String mathString) {
+    public String calculateString(String mathString) throws InvalidMathStringException {
         if (!CalculatorValidator.isMathStringValid(mathString)) {
-            return ILLEGAL_ARGUMENT;
+            throw new InvalidMathStringException();
         }
         try {
             Object result = new JexlEngine().createExpression(normalize(mathString)).evaluate(ctx);
             return result.toString();
         } catch (JexlException e) {
-            logger.error("Error during paring expression: " + mathString);
-            return ILLEGAL_ARGUMENT;
+            throw new InvalidMathStringException();
         }
     }
 
