@@ -44,11 +44,13 @@ angular.module('myApp.view1', ['ngRoute'])
 
                 $scope.clickResult = function ($event) {
                     var mathExp = this.calculator.expression.join('');
-
+                                        console.log('math decoded' + mathExp);
+                    mathExp=encodeURIComponent(mathExp);
+                    console.log('math encoded' + mathExp);
                     $http({
-                        url: '/calculator-jetty/rs-api/calculator/v1.0/calculate',
+                                 url: '/calculator-jetty/rs-api/calculator/v1.0/calculate',
                         method: 'POST',
-                        data: 'mathString=' + mathExp,
+                        data: 'mathString=' + mathExp+'',
                         headers: {
                             "Content-Type": "application/x-www-form-urlencoded"
                         }

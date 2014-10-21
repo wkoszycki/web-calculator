@@ -32,6 +32,11 @@ public class CalculatorServiceTest {
         }
     }
 
+    @Test
+    public void testDouble() throws InvalidMathStringException {
+        assertEquals("2.4", service.calculateString("12/5"));
+    }
+
     @Test(expected = InvalidMathStringException.class)
     public void testBeginWithLetters() throws InvalidMathStringException {
         service.calculateString("cos1+1");

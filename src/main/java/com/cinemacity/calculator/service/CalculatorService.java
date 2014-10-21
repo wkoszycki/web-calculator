@@ -5,10 +5,9 @@ import com.cinemacity.calculator.validation.CalculatorValidator;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
-import org.apache.commons.jexl2.JexlContext;
-import org.apache.commons.jexl2.JexlEngine;
-import org.apache.commons.jexl2.JexlException;
-import org.apache.commons.jexl2.MapContext;
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,7 +19,6 @@ import org.slf4j.LoggerFactory;
 public class CalculatorService implements Serializable {
 
     private final Logger logger = LoggerFactory.getLogger(CalculatorService.class);
-    private JexlContext ctx;
 
     /**
      * Initializes this object.
@@ -28,7 +26,6 @@ public class CalculatorService implements Serializable {
     @PostConstruct
     public void init() {
         logger.info("Creating Calculation service");
-        this.ctx = new MapContext();
     }
 
     /**
@@ -46,9 +43,14 @@ public class CalculatorService implements Serializable {
             throw new InvalidMathStringException();
         }
         try {
-            Object result = new JexlEngine().createExpression(normalize(mathString)).evaluate(ctx);
+            ScriptEngineManager mgr = new ScriptEngineManager();
+            ScriptEngine engine = mgr.getEngineByName("JavaScript");
+            Double result = (Double) engine.eval(normalize(mathString));
+            if ((result == Math.floor(result)) && !Double.isInfinite(result)) {
+                return String.valueOf(result.intValue());
+            }
             return result.toString();
-        } catch (JexlException e) {
+        } catch (ScriptException ex) {
             throw new InvalidMathStringException();
         }
     }
