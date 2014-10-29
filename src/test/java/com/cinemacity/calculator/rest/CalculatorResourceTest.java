@@ -9,7 +9,7 @@ import org.junit.Test;
 
 /**
  *
- * @author Wojciech Koszycki <wojciech.koszycki@coi.gov.pl>
+ * @author Wojciech Koszycki <wojciech.koszycki@gmail.com>
  */
 public class CalculatorResourceTest {
 

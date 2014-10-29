@@ -15,7 +15,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  *
- * @author Wojciech Koszycki <wojciech.koszycki@coi.gov.pl>
+ * @author Wojciech Koszycki <wojciech.koszycki@gmail.com>
  */
 @SessionScoped
 public class CalculatorService implements Serializable {

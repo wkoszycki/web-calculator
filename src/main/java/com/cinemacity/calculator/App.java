@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 /**
  * Main application class responsible for starting jetty server.
  *
- * @author Wojciech Koszycki <wojciech.koszycki@coi.gov.pl>
+ * @author Wojciech Koszycki <wojciech.koszycki@gmail.com>
  */
 public class App {
 

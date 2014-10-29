@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
  *
 *
  * Work around I didn't wanted to include the entire EE 6 api! so a bit of tricky hacks :)
- * @author Wojciech Koszycki <wojciech.koszycki@coi.gov.pl>
+ * @author Wojciech Koszycki <wojciech.koszycki@gmail.com>
  */
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)

@@ -8,7 +8,7 @@ import javax.ws.rs.core.Application;
  * Configuration class for Jersey, responsible for registering resources. Can be
  * automatically auto-scaned, for now manually added to save overhead
  *
- * @author Wojciech Koszycki <wojciech.koszycki@coi.gov.pl>
+ * @author Wojciech Koszycki <wojciech.koszycki@gmail.com>
  */
 public class RestConfig extends Application {
 

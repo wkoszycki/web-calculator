@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory;
 /**
  * JAX-RS Resource for calculator.
  *
- * @author Wojciech Koszycki <wojciech.koszycki@coi.gov.pl>
+ * @author Wojciech Koszycki <wojciech.koszycki@gmail.com>
  */
 @Path("calculator/v1.0")
 @RequestScoped

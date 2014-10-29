@@ -4,7 +4,7 @@ import java.util.regex.Pattern;
 
 /**
  *
- * @author Wojciech Koszycki <wojciech.koszycki@coi.gov.pl>
+ * @author Wojciech Koszycki <wojciech.koszycki@gmail.com>
  */
 public class CalculatorValidator {
 
