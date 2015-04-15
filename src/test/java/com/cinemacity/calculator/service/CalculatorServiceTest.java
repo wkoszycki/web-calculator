@@ -2,58 +2,59 @@ package com.cinemacity.calculator.service;
 
 import com.cinemacity.calculator.TestUtil;
 import com.cinemacity.calculator.exception.InvalidMathStringException;
-import static org.junit.Assert.assertEquals;
+
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+
 /**
- *
  * @author Wojciech Koszycki <wojciech.koszycki@gmail.com>
  */
 public class CalculatorServiceTest {
 
-    CalculatorService service;
+  CalculatorService service;
 
-    @Before
-    public void setUp() {
-        service = new CalculatorService();
-        service.init();
-    }
+  public CalculatorServiceTest() {
+  }
 
-    public CalculatorServiceTest() {
-    }
+  @Before
+  public void setUp() {
+    service = new CalculatorService();
+    service.init();
+  }
 
-    @Test
-    public void testPositiveCases() throws InvalidMathStringException {
-        String result = "69";
-        for (String positiveCase : TestUtil.positiveCases) {
-            assertEquals("Comparision failed for expr:" + positiveCase,
-                result, service.calculateString(positiveCase));
-        }
+  @Test
+  public void testPositiveCases() throws InvalidMathStringException {
+    String result = "69";
+    for (String positiveCase : TestUtil.positiveCases) {
+      assertEquals("Comparision failed for expr:" + positiveCase,
+                   result, service.calculateString(positiveCase));
     }
+  }
 
-    @Test
-    public void testDouble() throws InvalidMathStringException {
-        assertEquals("2.4", service.calculateString("12/5"));
-    }
+  @Test
+  public void testDouble() throws InvalidMathStringException {
+    assertEquals("2.4", service.calculateString("12/5"));
+  }
 
-    @Test(expected = InvalidMathStringException.class)
-    public void testBeginWithLetters() throws InvalidMathStringException {
-        service.calculateString("cos1+1");
-    }
+  @Test(expected = InvalidMathStringException.class)
+  public void testBeginWithLetters() throws InvalidMathStringException {
+    service.calculateString("cos1+1");
+  }
 
-    @Test(expected = InvalidMathStringException.class)
-    public void testLettersInside() throws InvalidMathStringException {
-        service.calculateString("12a3-54");
-    }
+  @Test(expected = InvalidMathStringException.class)
+  public void testLettersInside() throws InvalidMathStringException {
+    service.calculateString("12a3-54");
+  }
 
-    @Test(expected = InvalidMathStringException.class)
-    public void testWhiteSpaces() throws InvalidMathStringException {
-        service.calculateString(" 98[*5");
-    }
+  @Test(expected = InvalidMathStringException.class)
+  public void testWhiteSpaces() throws InvalidMathStringException {
+    service.calculateString(" 98[*5");
+  }
 
-    @Test(expected = InvalidMathStringException.class)
-    public void testNewLine() throws InvalidMathStringException {
-        service.calculateString("23-4*(50/\\n8)+[43+{5]");
-    }
+  @Test(expected = InvalidMathStringException.class)
+  public void testNewLine() throws InvalidMathStringException {
+    service.calculateString("23-4*(50/\\n8)+[43+{5]");
+  }
 }
