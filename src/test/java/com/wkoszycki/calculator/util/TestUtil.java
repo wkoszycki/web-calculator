@@ -1,8 +1,6 @@
-package com.cinemacity.calculator;
+package com.wkoszycki.calculator.util;
 
-/**
- * @author Wojciech Koszycki <wojciech.koszycki@gmail.com>
- */
+//TODO: Find a better name ...
 public class TestUtil {
 
   public static final String[]

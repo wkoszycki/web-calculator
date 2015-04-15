@@ -87,7 +87,7 @@
          *    - `template` – `{string=|function()=}` – html template as a string or a function that
          *      returns an html template as a string which should be used by {@link
             *      ngRoute.directive:ngView ngView} or {@link ng.directive:ngInclude ngInclude}
-            *     directives. This property takes precedence over `templateUrl`.
+         *     directives. This property takes precedence over `templateUrl`.
          *
          *      If `template` is a function, it will be called with the following parameters:
          *
@@ -107,7 +107,7 @@
          *     the router will wait for them all to be resolved or one to be rejected before the
          *     controller is instantiated. If all the promises are resolved successfully, the
          *     values of the resolved promises are injected and {@link
-         *     ngRoute.$route#$routeChangeSuccess $routeChangeSuccess} event is fired. If any of
+            *     ngRoute.$route#$routeChangeSuccess $routeChangeSuccess} event is fired. If any of
          *     the promises are rejected the
          *      {@link ngRoute.$route#$routeChangeError $routeChangeError} event is fired. The map
          *     object is:

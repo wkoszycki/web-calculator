@@ -1140,8 +1140,10 @@
                 wasExpected = false;
 
             function prettyPrint(data) {
-                return (angular.isString(data) || angular.isFunction(data) || datainstanceof RegExp)
-                    ? data
+                return (angular.isString(data) || angular.isFunction(data) || datainstanceof
+                RegExp
+            )
+                ? data
                     : angular.toJson(data);
             }
 
@@ -2074,7 +2076,7 @@
          *
          * This function registers a module configuration code. It collects the configuration
          *     information which will be used when the injector is created by {@link
-         *     angular.mock.inject inject}.
+            *     angular.mock.inject inject}.
          *
          * See {@link angular.mock.inject inject} for usage example
          *

@@ -1463,7 +1463,7 @@
      * @param {Array<String|Function|Array>=} modules an array of modules to load into the
      *     application. Each item in the array should be the name of a predefined module or a (DI
      *     annotated) function that will be invoked by the injector as a run block. See: {@link
-     *     angular.module modules}
+        *     angular.module modules}
      * @returns {auto.$injector} Returns the newly created injector for this app.
      */
     function bootstrap(element, modules) {
@@ -3675,7 +3675,7 @@
      * Service provider objects can have additional methods which allow configuration of the
      *     provider and its service. Importantly, you can configure what kind of service is created
      *     by the `$get` method, or how that service will act. For example, the {@link
-     *     ng.$logProvider $logProvider} has a method {@link ng.$logProvider#debugEnabled
+        *     ng.$logProvider $logProvider} has a method {@link ng.$logProvider#debugEnabled
      *     debugEnabled} which lets you specify whether the {@link ng.$log $log} service will log
      *     debug messages to the console or not.
      *
@@ -3764,7 +3764,7 @@
      * Register a **service factory**, which will be called to return the service instance.
      * This is short for registering a service where its provider consists of only a `$get`
      *     property, which is the given service factory function. You should use {@link
-     *     auto.$provide#factory $provide.factory(getFn)} if you do not need to configure your
+        *     auto.$provide#factory $provide.factory(getFn)} if you do not need to configure your
      *     service in a provider.
      *
      * @param {string} name The name of the instance.
@@ -3870,8 +3870,8 @@
      * Register a **constant service**, such as a string, a number, an array, an object or a
      *     function, with the {@link auto.$injector $injector}. Unlike {@link auto.$provide#value
      *     value} it can be injected into a module configuration function (see {@link
-     *     angular.Module#config}) and it cannot be overridden by an Angular {@link
-     *     auto.$provide#decorator decorator}.
+        *     angular.Module#config}) and it cannot be overridden by an Angular {@link
+        *     auto.$provide#decorator decorator}.
      *
      * @param {string} name The name of the constant.
      * @param {*} value The constant value.
@@ -4361,7 +4361,7 @@
              *     perform simple DOM manipulation operations.
              *
              * To learn more about enabling animation support, click here to visit the {@link
-             *     ngAnimate ngAnimate module page} as well as the {@link ngAnimate.$animate
+                *     ngAnimate ngAnimate module page} as well as the {@link ngAnimate.$animate
              *     ngAnimate $animate service page}.
              */
             return {
@@ -5600,8 +5600,8 @@
      *
      * The replacement process migrates all of the attributes / classes from the old element to the
      *     new one. See the {@link
-     *     guide/directive#creating-custom-directives_creating-directives_template-expanding-directive
-     *     Directives Guide} for an example.
+        *     guide/directive#creating-custom-directives_creating-directives_template-expanding-directive
+        *     Directives Guide} for an example.
      *
      * #### `transclude`
      * compile the content of the element and make it available to the directive.
@@ -5619,7 +5619,7 @@
      * <div class="alert alert-warning">
      * **Note:** When testing an element transclude directive you must not place the directive at
      *     the root of the DOM fragment that is being compiled. See {@link
-     *     guide/unit-testing#testing-transclusion-directives Testing Transclusion Directives}.
+        *     guide/unit-testing#testing-transclusion-directives Testing Transclusion Directives}.
      * </div>
      *
      * #### `compile`
@@ -7439,7 +7439,8 @@
                                                                    // digest occurs (when both the
                                                                    // new and the old values are
                                                                    // the same) since the CSS
-                                                                   // classes are the non-interpolated values
+                                                                   // classes are the
+                                                                   // non-interpolated values
                                                                    if (name === 'class' && newValue
                                                                                            != oldValue) {
                                                                        attr.$updateClass(newValue,
@@ -7981,8 +7982,8 @@
                           * {@link ngMock.$httpBackend $httpBackend mock}.
                           *
                           * For a higher level of abstraction, please check out the {@link
-                          *     ngResource.$resource
-     * $resource} service.
+                             *     ngResource.$resource
+                          * $resource} service.
                           *
                           * The $http API is based on the {@link ng.$q deferred/promise APIs}
                           *     exposed by the $q service. While for simple usage patterns this
@@ -8165,7 +8166,8 @@
                           *     intercept requests before they are handed to the server and
                           *     responses before they are handed over to the application code that
                           *     initiated these requests. The interceptors leverage the {@link
-                          *     ng.$q promise APIs} to fulfill this need for both synchronous and
+                             *     ng.$q promise APIs} to fulfill this need for both synchronous
+                             *     and
                           *     asynchronous pre-processing.
                           *
                           * The interceptors are service factories that are registered with the
@@ -9429,7 +9431,7 @@
                           *     will repeat indefinitely.
                           * @param {boolean=} [invokeApply=true] If set to `false` skips model
                           *     dirty checking, otherwise will invoke `fn` within the {@link
-                          *     ng.$rootScope.Scope#$apply $apply} block.
+                             *     ng.$rootScope.Scope#$apply $apply} block.
                           * @returns {promise} A promise which will be notified on each iteration.
                           *
                           * @example
@@ -12654,7 +12656,7 @@
                           *
                           * @param {Object.<string, function()>=} providers Map of service factory
                           *     which need to be provided for the current scope. Defaults to {@link
-                          *     ng}.
+                             *     ng}.
                           * @param {Object.<string, *>=} instanceCache Provides pre-instantiated
                           *     services which should append/override services provided by
                           *     `providers`. This is handy when unit-testing and having the need to
@@ -12711,9 +12713,9 @@
                               * Creates a new child {@link ng.$rootScope.Scope scope}.
                               *
                               * The parent scope will propagate the {@link
-                              *     ng.$rootScope.Scope#$digest $digest()} event. The scope can be
-                              *     removed from the scope hierarchy using {@link
-                              *     ng.$rootScope.Scope#$destroy $destroy()}.
+                                 *     ng.$rootScope.Scope#$digest $digest()} event. The scope can
+                                 *     be removed from the scope hierarchy using {@link
+                                 *     ng.$rootScope.Scope#$destroy $destroy()}.
                               *
                               * {@link ng.$rootScope.Scope#$destroy $destroy()} must be called on a
                               *     scope when it is desired for the scope and its child scopes to
@@ -12779,8 +12781,9 @@
                               *     `watchExpression` changes.
                               *
                               * - The `watchExpression` is called on every call to {@link
-                              *     ng.$rootScope.Scope#$digest
-       *   $digest()} and should return the value that will be watched. (Since
+                                 *     ng.$rootScope.Scope#$digest
+                              *   $digest()} and should return the value that will be watched.
+                              *     (Since
                               *   {@link ng.$rootScope.Scope#$digest $digest()} reruns when it
                               *     detects changes the
                               *   `watchExpression` can execute multiple times per
@@ -12798,7 +12801,8 @@
                               *   (see next point)
                               * - When `objectEquality == true`, inequality of the
                               *     `watchExpression` is determined according to the {@link
-                              *     angular.equals} function. To save the value of the object for
+                                 *     angular.equals} function. To save the value of the object
+                                 *     for
                               *     later comparison, the {@link angular.copy} function is used.
                               *     This therefore means that watching complex objects will have
                               *     adverse memory and performance implications.
@@ -12809,10 +12813,10 @@
                               *
                               *
                               * If you want to be notified whenever {@link
-                              *     ng.$rootScope.Scope#$digest $digest} is called, you can
+                                 *     ng.$rootScope.Scope#$digest $digest} is called, you can
                               *     register a `watchExpression` function with no `listener`.
                               *     (Since `watchExpression` can execute multiple times per {@link
-                              *     ng.$rootScope.Scope#$digest $digest} cycle when a change is
+                                 *     ng.$rootScope.Scope#$digest $digest} cycle when a change is
                               *     detected, be prepared for multiple calls to your listener.)
                               *
                               * After a watcher is registered with the scope, the `listener` fn is
@@ -12980,7 +12984,7 @@
                               *
                               *
                               * @param {string|function(scope)} obj Evaluated as {@link
-                              *     guide/expression expression}. The expression value should
+                                 *     guide/expression expression}. The expression value should
                               *     evaluate to an object or an array which is observed on each
                               *    {@link ng.$rootScope.Scope#$digest $digest} cycle. Any shallow
                               *     change within the collection will trigger a call to the
@@ -13138,9 +13142,10 @@
                               * @description
                               * Processes all of the {@link ng.$rootScope.Scope#$watch watchers} of
                               *     the current scope and its children. Because a {@link
-                              *     ng.$rootScope.Scope#$watch watcher}'s listener can change the
+                                 *     ng.$rootScope.Scope#$watch watcher}'s listener can change
+                                 *     the
                               *     model, the `$digest()` keeps calling the {@link
-                              *     ng.$rootScope.Scope#$watch watchers} until no more listeners
+                                 *     ng.$rootScope.Scope#$watch watchers} until no more listeners
                               *     are firing. This means that it is possible to get into an
                               *     infinite loop. This function will throw `'Maximum iteration
                               *     limit exceeded.'` if the number of iterations exceeds 10.
@@ -13150,7 +13155,8 @@
                               * {@link ng.$compileProvider#directive directives}.
                               * Instead, you should call {@link ng.$rootScope.Scope#$apply
                               *     $apply()} (typically from within a {@link
-                              *     ng.$compileProvider#directive directives}), which will force a
+                                 *     ng.$compileProvider#directive directives}), which will force
+                                 *     a
                               *     `$digest()`.
                               *
                               * If you want to be notified whenever `$digest()` is called,
@@ -13337,9 +13343,10 @@
                               * @description
                               * Removes the current scope (and all of its children) from the parent
                               *     scope. Removal implies that calls to {@link
-                              *     ng.$rootScope.Scope#$digest $digest()} will no longer propagate
-                              *     to the current scope and its children. Removal also implies
-                              *     that the current scope is eligible for garbage collection.
+                                 *     ng.$rootScope.Scope#$digest $digest()} will no longer
+                                 *     propagate to the current scope and its children. Removal
+                                 *     also implies that the current scope is eligible for garbage
+                                 *     collection.
                               *
                               * The `$destroy()` is usually used by directives such as
                               * {@link ng.directive:ngRepeat ngRepeat} for managing the
@@ -13438,7 +13445,7 @@
                               *     be executed.
                               *
                               *    - `string`: execute using the rules as defined in  {@link
-                              *     guide/expression expression}.
+                                 *     guide/expression expression}.
                               *    - `function(scope)`: execute the function with the current
                               *     `scope` parameter.
                               *
@@ -13482,7 +13489,7 @@
                               *     be executed.
                               *
                               *    - `string`: execute using the rules as defined in {@link
-                              *     guide/expression expression}.
+                                 *     guide/expression expression}.
                               *    - `function(scope)`: execute the function with the current
                               *     `scope` parameter.
                               *
@@ -13544,14 +13551,14 @@
                               *    {@link ng.$exceptionHandler $exceptionHandler} service.
                               * 3. The {@link ng.$rootScope.Scope#$watch watch} listeners are fired
                               *     immediately after the expression was executed using the {@link
-                              *     ng.$rootScope.Scope#$digest $digest()} method.
+                                 *     ng.$rootScope.Scope#$digest $digest()} method.
                               *
                               *
                               * @param {(string|function())=} exp An angular expression to be
                               *     executed.
                               *
                               *    - `string`: execute using the rules as defined in {@link
-                              *     guide/expression expression}.
+                                 *     guide/expression expression}.
                               *    - `function(scope)`: execute the function with current `scope`
                               *     parameter.
                               *
@@ -13581,7 +13588,7 @@
                               *
                               * @description
                               * Listens on events of a given type. See {@link
-                              *     ng.$rootScope.Scope#$emit $emit} for discussion of event life
+                                 *     ng.$rootScope.Scope#$emit $emit} for discussion of event life
                               *     cycle.
                               *
                               * The event listener function format is: `function(event, args...)`.
@@ -13656,7 +13663,7 @@
                               * @param {...*} args Optional one or more arguments which will be
                               *     passed onto the event listeners.
                               * @return {Object} Event object (see {@link
-                              *     ng.$rootScope.Scope#$on}).
+                                 *     ng.$rootScope.Scope#$on}).
                               */
                              $emit: function (name, args) {
                                  var empty = [],
@@ -13717,7 +13724,7 @@
                               * @description
                               * Dispatches an event `name` downwards to all child scopes (and their
                               *     children) notifying the registered {@link
-                              *     ng.$rootScope.Scope#$on} listeners.
+                                 *     ng.$rootScope.Scope#$on} listeners.
                               *
                               * The event life cycle starts at the scope on which `$broadcast` was
                               *     called. All
@@ -14001,11 +14008,11 @@
      * @description
      *
      * The `$sceDelegateProvider` provider allows developers to configure the {@link
-     *     ng.$sceDelegate
- * $sceDelegate} service.  This allows one to get/set the whitelists and blacklists used to ensure
-     * that the URLs used for sourcing Angular templates are safe.  Refer {@link
-        * ng.$sceDelegateProvider#resourceUrlWhitelist $sceDelegateProvider.resourceUrlWhitelist}
-        *     and
+        *     ng.$sceDelegate
+     * $sceDelegate} service.  This allows one to get/set the whitelists and blacklists used to
+     *     ensure that the URLs used for sourcing Angular templates are safe.  Refer {@link
+     *     ng.$sceDelegateProvider#resourceUrlWhitelist $sceDelegateProvider.resourceUrlWhitelist}
+     *     and
      * {@link ng.$sceDelegateProvider#resourceUrlBlacklist
      *     $sceDelegateProvider.resourceUrlBlacklist}
      *
@@ -14223,8 +14230,8 @@
              *
              * @description
              * If the passed parameter had been returned by a prior call to {@link
-             *     ng.$sceDelegate#trustAs
-     * `$sceDelegate.trustAs`}, returns the value that had been passed to {@link
+                *     ng.$sceDelegate#trustAs
+             * `$sceDelegate.trustAs`}, returns the value that had been passed to {@link
                 * ng.$sceDelegate#trustAs `$sceDelegate.trustAs`}.
              *
              * If the passed parameter is not a value that had been returned by {@link
@@ -14233,8 +14240,9 @@
              * @param {*} value The result of a prior {@link ng.$sceDelegate#trustAs
              *     `$sceDelegate.trustAs`} call or anything else.
              * @returns {*} The `value` that was originally provided to {@link
-             *     ng.$sceDelegate#trustAs
-     *     `$sceDelegate.trustAs`} if `value` is the result of such a call.  Otherwise, returns
+                *     ng.$sceDelegate#trustAs
+             *     `$sceDelegate.trustAs`} if `value` is the result of such a call.  Otherwise,
+             *     returns
              *     `value` unchanged.
              */
             function valueOf(maybeTrusted) {
@@ -14377,15 +14385,15 @@
      * ## How does it work?
      *
      * In privileged contexts, directives and code will bind to the result of {@link
-     *     ng.$sce#getTrusted
- * $sce.getTrusted(context, value)} rather than to the value directly.  Directives use {@link
+        *     ng.$sce#getTrusted
+     * $sce.getTrusted(context, value)} rather than to the value directly.  Directives use {@link
         * ng.$sce#parse $sce.parseAs} rather than `$parse` to watch attribute bindings, which
-        *     performs the
+     *     performs the
      * {@link ng.$sce#getTrusted $sce.getTrusted} behind the scenes on non-constant literals.
      *
      * As an example, {@link ng.directive:ngBindHtml ngBindHtml} uses {@link
         * ng.$sce#parseAsHtml $sce.parseAsHtml(binding expression)}.  Here's the actual code
-        *     (slightly simplified):
+     *     (slightly simplified):
      *
      * ```
      * var ngBindHtmlDirective = ['$sce', function($sce) {
@@ -14436,7 +14444,7 @@
      *     know about SCE. It blocks loading templates from other domains or loading templates over
      *     http from an https served document.  You can change these by setting your own custom
      *     {@link ng.$sceDelegateProvider#resourceUrlWhitelist whitelists} and {@link
-     *     ng.$sceDelegateProvider#resourceUrlBlacklist blacklists} for matching such URLs.
+        *     ng.$sceDelegateProvider#resourceUrlBlacklist blacklists} for matching such URLs.
      *
      * This significantly reduces the overhead.  It is far easier to pay the small overhead and
      *     have an application that's secure and can be audited to verify that with much more ease
@@ -14448,7 +14456,7 @@
      * | Context             | Notes          |
      * |---------------------|----------------|
      * | `$sce.HTML`         | For HTML that's safe to source into the application.  The {@link
-     *     ng.directive:ngBindHtml ngBindHtml} directive uses this context for bindings. If an
+        *     ng.directive:ngBindHtml ngBindHtml} directive uses this context for bindings. If an
      *     unsafe value is encountered and the {@link ngSanitize $sanitize} module is present this
      *     will sanitize the value instead of throwing an error. |
      * | `$sce.CSS`          | For CSS that's safe to source into the application.  Currently
@@ -14716,8 +14724,8 @@
              * Converts Angular {@link guide/expression expression} into a function.  This is like
              *     {@link ng.$parse $parse} and is identical when the expression is a literal
              *     constant.  Otherwise, it wraps the expression in a call to {@link
-             *     ng.$sce#getTrusted $sce.getTrusted(*type*,
-     * *result*)}
+                *     ng.$sce#getTrusted $sce.getTrusted(*type*,
+             * *result*)}
              *
              * @param {string} type The kind of SCE context in which this result will be used.
              * @param {string} expression String expression to compile.
@@ -15140,7 +15148,7 @@
                           * @param {number=} [delay=0] Delay in milliseconds.
                           * @param {boolean=} [invokeApply=true] If set to `false` skips model
                           *     dirty checking, otherwise will invoke `fn` within the {@link
-                          *     ng.$rootScope.Scope#$apply $apply} block.
+                             *     ng.$rootScope.Scope#$apply $apply} block.
                           * @returns {Promise} Promise that will be resolved when the timeout is
                           *     reached. The value this promise will be resolved with is the return
                           *     value of the `fn` function.
@@ -15882,9 +15890,8 @@
             // arithmetics
             // inspired by:
             // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round
-            number =
-            +(Math.round(+(number.toString() + 'e' + fractionSize)).toString() + 'e'
-              + -fractionSize);
+            number = +(Math.round(+(number.toString() + 'e' + fractionSize)).toString() + 'e'
+                       + -fractionSize);
 
             if (number === 0) {
                 isNegative = false;
@@ -19239,10 +19246,10 @@
      *     current element in a secure way.  By default, the innerHTML-ed content will be sanitized
      *     using the {@link ngSanitize.$sanitize $sanitize} service.  To utilize this
      *     functionality, ensure that `$sanitize` is available, for example, by including {@link
-     *     ngSanitize} in your module's dependencies (not in core Angular.)  You may also bypass
+        *     ngSanitize} in your module's dependencies (not in core Angular.)  You may also bypass
      *     sanitization for values you know are safe. To do so, bind to an explicitly trusted value
      *     via {@link ng.$sce#trustAsHtml $sce.trustAsHtml}.  See the example under {@link
-     *     ng.$sce#Example Strict Contextual Escaping (SCE)}.
+        *     ng.$sce#Example Strict Contextual Escaping (SCE)}.
      *
      * Note: If a `$sanitize` service is unavailable and the bound value isn't explicitly trusted,
      *     you will have an exception (instead of an exploit.)
@@ -20798,44 +20805,37 @@
                                                                if (src) {
                                                                    $http.get(src,
                                                                              {cache: $templateCache}).success(function (response) {
-                                                                                                                                                                                     if (thisChangeId
-                                                                                                                                                                                         !== changeCounter) {
-                                                                                                                                                                                         return;
-                                                                                                                                                                                     }
-                                                                       var newScope = scope.$new();
-                                                                       ctrl.template = response;
+                                                                                                                  if (thisChangeId
+                                                                                                                      !== changeCounter) {
+                                                                                                                      return;
+                                                                                                                  }
+                                                                                                                  var newScope = scope.$new();
+                                                                                                                  ctrl.template =
+                                                                                                                  response;
 
-                                                                       // Note: This will also link
-                                                                       // all children of
-                                                                       // ng-include that were
-                                                                       // contained in the original
-                                                                       // html. If that content
-                                                                       // contains controllers, ...
-                                                                       // they could pollute/change
-                                                                       // the scope. However, using
-                                                                       // ng-include on an element
-                                                                       // with additional content
-                                                                       // does not make sense... Note: We can't remove them in the cloneAttchFn of $transclude as that function is called before linking the content, which would apply child directives to non existing elements.
-                                                                       var clone = $transclude(newScope,
-                                                                                               function (clone) {
-                                                                                                   cleanupLastIncludeContent();
-                                                                                                   $animate.enter(clone,
-                                                                                                                  null,
-                                                                                                                  $element,
-                                                                                                                  afterAnimation);
-                                                                                               });
+                                                                                                                  // Note: This will also link all children of ng-include that were contained in the original html. If that content contains controllers, ... they could pollute/change the scope. However, using ng-include on an element with additional content does not make sense... Note: We can't remove them in the cloneAttchFn of $transclude as that function is called before linking the content, which would apply child directives to non existing elements.
+                                                                                                                  var clone = $transclude(newScope,
+                                                                                                                                          function (clone) {
+                                                                                                                                              cleanupLastIncludeContent();
+                                                                                                                                              $animate.enter(clone,
+                                                                                                                                                             null,
+                                                                                                                                                             $element,
+                                                                                                                                                             afterAnimation);
+                                                                                                                                          });
 
-                                                                       currentScope = newScope;
-                                                                       currentElement = clone;
+                                                                                                                  currentScope =
+                                                                                                                  newScope;
+                                                                                                                  currentElement =
+                                                                                                                  clone;
 
-                                                                       currentScope.$emit('$includeContentLoaded');
-                                                                       scope.$eval(onloadExp);
-                                                                   }).error(function () {
-                                                                                                                                                   if (thisChangeId
-                                                                                                                                                       === changeCounter) {
-                                                                                                                                                       cleanupLastIncludeContent();
-                                                                                                                                                   }
-                                                                   });
+                                                                                                                  currentScope.$emit('$includeContentLoaded');
+                                                                                                                  scope.$eval(onloadExp);
+                                                                                                              }).error(function () {
+                                                                                                                           if (thisChangeId
+                                                                                                                               === changeCounter) {
+                                                                                                                               cleanupLastIncludeContent();
+                                                                                                                           }
+                                                                                                                       });
                                                                    scope.$emit('$includeContentRequested');
                                                                } else {
                                                                    cleanupLastIncludeContent();

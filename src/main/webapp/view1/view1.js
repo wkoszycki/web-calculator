@@ -43,7 +43,7 @@ angular.module('myApp.view1', ['ngRoute'])
                         }
                     };
                     $scope.clickHistory = function ($event) {
-                        $http.get('/calculator-jetty/rs-api/calculator/v1.0/printHistory').
+                        $http.get('/calculator-jetty/rs-api/calculator/v1.0/getAllPreviousOperations').
                             success(function (data, status, headers, config) {
                                         $scope.calculator.history = data;
                                     }).

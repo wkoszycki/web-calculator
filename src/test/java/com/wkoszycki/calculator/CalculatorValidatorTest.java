@@ -1,20 +1,13 @@
-package com.cinemacity.calculator.validator;
+package com.wkoszycki.calculator;
 
-import com.cinemacity.calculator.TestUtil;
-import com.cinemacity.calculator.validation.CalculatorValidator;
+import com.wkoszycki.calculator.util.TestUtil;
 
 import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-/**
- * @author Wojciech Koszycki <wojciech.koszycki@gmail.com>
- */
 public class CalculatorValidatorTest {
-
-  public CalculatorValidatorTest() {
-  }
 
   @Test
   public void testPositiveCase() {

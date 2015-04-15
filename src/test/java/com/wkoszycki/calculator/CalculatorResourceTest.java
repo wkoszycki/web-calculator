@@ -1,7 +1,6 @@
-package com.cinemacity.calculator.rest;
+package com.wkoszycki.calculator;
 
-import com.cinemacity.calculator.TestUtil;
-import com.cinemacity.calculator.service.CalculatorService;
+import com.wkoszycki.calculator.util.TestUtil;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -10,9 +9,6 @@ import javax.ws.rs.core.Response;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- * @author Wojciech Koszycki <wojciech.koszycki@gmail.com>
- */
 public class CalculatorResourceTest {
 
   CalculatorResource instance;
@@ -22,10 +18,7 @@ public class CalculatorResourceTest {
 
   @Before
   public void setUp() {
-    this.instance = new CalculatorResource();
-    CalculatorService calculatorService = new CalculatorService();
-    calculatorService.init();
-    instance.setCalculatorService(calculatorService);
+    this.instance = new CalculatorResource(new CalculatorService());
   }
 
   @Test

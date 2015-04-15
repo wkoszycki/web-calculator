@@ -1,27 +1,20 @@
-package com.cinemacity.calculator.service;
+package com.wkoszycki.calculator;
 
-import com.cinemacity.calculator.TestUtil;
-import com.cinemacity.calculator.exception.InvalidMathStringException;
+import com.wkoszycki.calculator.exception.InvalidMathStringException;
+import com.wkoszycki.calculator.util.TestUtil;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- * @author Wojciech Koszycki <wojciech.koszycki@gmail.com>
- */
 public class CalculatorServiceTest {
 
   CalculatorService service;
 
-  public CalculatorServiceTest() {
-  }
-
   @Before
   public void setUp() {
     service = new CalculatorService();
-    service.init();
   }
 
   @Test

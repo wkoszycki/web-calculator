@@ -1,7 +1,6 @@
-package com.cinemacity.calculator.rest;
+package com.wkoszycki.calculator;
 
-import com.cinemacity.calculator.exception.InvalidMathStringException;
-import com.cinemacity.calculator.service.CalculatorService;
+import com.wkoszycki.calculator.exception.InvalidMathStringException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,9 +15,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 /**
- * JAX-RS Resource for calculator.
- *
- * @author Wojciech Koszycki <wojciech.koszycki@gmail.com>
+ * Calculator Rest Service.
  */
 @Path("calculator/v1.0")
 @RequestScoped
@@ -26,8 +23,12 @@ public class CalculatorResource {
 
   Logger logger = LoggerFactory.getLogger(CalculatorService.class);
 
-  @Inject
   private CalculatorService calculatorService;
+
+  @Inject
+  public CalculatorResource(CalculatorService calculatorService) {
+    this.calculatorService = calculatorService;
+  }
 
   /**
    * JAX-RS Interface for value calculations.
@@ -41,7 +42,7 @@ public class CalculatorResource {
     String result;
     int httpStatusCode = 200;
     try {
-      logger.info("got message at Form param:" + mathString);
+      logger.info("Received message at Form param:" + mathString);
       result = calculatorService.calculateString(mathString);
     } catch (InvalidMathStringException ex) {
       result = ex.getMessage();
@@ -53,27 +54,12 @@ public class CalculatorResource {
         .build();
   }
 
-  /**
-   * Prints history
-   *
-   * @return history string.
-   */
   @GET
-  @Path("/printHistory")
-  public Response printHistory() {
+  @Path("/getAllPreviousOperations")
+  public Response getAllPreviousOperations() {
     return Response.status(200)
-        .entity(calculatorService.printHistory())
+        .entity(calculatorService.getOperations())
         .type(MediaType.TEXT_PLAIN)
         .build();
   }
-
-  /**
-   * Use only for unit testing.
-   *
-   * @param calculatorService instance
-   */
-  protected void setCalculatorService(CalculatorService calculatorService) {
-    this.calculatorService = calculatorService;
-  }
-
 }
