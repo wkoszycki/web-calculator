@@ -13,9 +13,9 @@ import javax.enterprise.context.SessionScoped;
 import static com.wkoszycki.calculator.CalculatorValidator.isMathStringValid;
 
 @SessionScoped
-public class CalculatorService implements Serializable {
+class CalculatorService implements Serializable {
 
-  List<String> operations = new ArrayList<>();
+  private final List<String> operations = new ArrayList<>();
 
   public String calculateString(String mathString) throws InvalidMathStringException {
     if (!isMathStringValid(mathString)) {

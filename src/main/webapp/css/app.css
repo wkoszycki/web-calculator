@@ -89,16 +89,16 @@
 
 .button.black {
     color: black;
-    background-color: 303030;
+    background-color: #303030;
     border-bottom: black 2px solid;
-    border-top: 2px 303030 solid;
+    border-top: 2px #303030 solid;
 }
 
 .button.orange {
     color: black;
-    background-color: FF9933;
+    background-color: #FF9933;
     border-bottom: black 2px solid;
-    border-top: 2px FF9933 solid;
+    border-top: 2px #FF9933 solid;
 }
 
 .gray:active {
@@ -118,7 +118,7 @@
 
 .orange:active {
     border-top: black 2px solid;
-    border-bottom: FF9933 2px solid;
+    border-bottom: #FF9933 2px solid;
 }
 
 p {

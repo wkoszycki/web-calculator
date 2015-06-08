@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 
 public class CalculatorResourceTest {
 
-  CalculatorResource instance;
+  private CalculatorResource instance;
 
   @Before
   public void setUp() {

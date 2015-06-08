@@ -10,7 +10,7 @@ import static org.junit.Assert.assertEquals;
 
 public class CalculatorServiceTest {
 
-  CalculatorService service;
+  private CalculatorService service;
 
   @Before
   public void setUp() {
@@ -21,7 +21,7 @@ public class CalculatorServiceTest {
   public void testPositiveCases() throws InvalidMathStringException {
     String result = "69";
     for (String positiveCase : TestUtil.positiveCases) {
-      assertEquals("Comparision failed for expr:" + positiveCase,
+      assertEquals("Comparison failed for expr:" + positiveCase,
                    result, service.calculateString(positiveCase));
     }
   }

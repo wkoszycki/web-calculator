@@ -5,12 +5,12 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public class ParserConfiguration {
+class ParserConfiguration {
 
-  static final int DEFAULT_PRIORITY = 0;
+  private static final int DEFAULT_PRIORITY = 0;
   static String OPERATORS_TO_SPLIT;
-  static Map<String, Integer> OPERATORS_WITH_PRIORITY;
-  static Set<String> BRACKETS_REPOSITORY;
+  private static final Map<String, Integer> OPERATORS_WITH_PRIORITY;
+  private static final Set<String> BRACKETS_REPOSITORY;
 
   static {
     OPERATORS_WITH_PRIORITY = new HashMap<>();
@@ -51,7 +51,7 @@ public class ParserConfiguration {
     return getOperatorPriority(lastElement) >= getOperatorPriority(currentElement);
   }
 
-  static int getOperatorPriority(String lastElement) {
+  private static int getOperatorPriority(String lastElement) {
     return isOperator(lastElement) ? ParserConfiguration.OPERATORS_WITH_PRIORITY.get(lastElement)
                                    : ParserConfiguration.DEFAULT_PRIORITY;
   }

@@ -13,9 +13,9 @@ import static com.wkoszycki.calculator.parser.ParserConfiguration.isOperator;
 
 public class InfixConverter {
 
-  final String mathString;
-  final Stack<String> operators;
-  final List<String> output = new ArrayList<>();
+  private final String mathString;
+  private final Stack<String> operators;
+  private final List<String> output = new ArrayList<>();
 
 
   public InfixConverter(String mathString) {

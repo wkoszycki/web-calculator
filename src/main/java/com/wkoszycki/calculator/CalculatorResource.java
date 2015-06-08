@@ -18,9 +18,9 @@ import javax.ws.rs.core.Response;
 @RequestScoped
 public class CalculatorResource {
 
-  Logger logger = LoggerFactory.getLogger(CalculatorService.class);
+  private final Logger logger = LoggerFactory.getLogger(CalculatorService.class);
 
-  private CalculatorService calculatorService;
+  private final CalculatorService calculatorService;
 
   @Inject
   public CalculatorResource(CalculatorService calculatorService) {
