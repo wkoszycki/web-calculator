@@ -1,5 +1,6 @@
 package com.wkoszycki.calculator;
 
+import com.wkoszycki.calculator.exception.InvalidMathStringException;
 import com.wkoszycki.calculator.util.TestUtil;
 
 import org.junit.Before;
@@ -12,9 +13,6 @@ import static org.junit.Assert.assertEquals;
 public class CalculatorResourceTest {
 
   CalculatorResource instance;
-
-  public CalculatorResourceTest() {
-  }
 
   @Before
   public void setUp() {
@@ -30,12 +28,10 @@ public class CalculatorResourceTest {
     }
   }
 
-  @Test
+  @Test(expected = InvalidMathStringException.class)
   public void testNegativeCases() {
     for (String negativeCase : TestUtil.negativeCases) {
-      Response response = instance.calculate(negativeCase);
-      assertEquals("httpStatus code differs:" + negativeCase,
-                   400, response.getStatus());
+      instance.calculate(negativeCase);
     }
   }
 

@@ -14,9 +14,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-/**
- * Calculator Rest Service.
- */
 @Path("calculator/v1.0")
 @RequestScoped
 public class CalculatorResource {
@@ -30,33 +27,21 @@ public class CalculatorResource {
     this.calculatorService = calculatorService;
   }
 
-  /**
-   * JAX-RS Interface for value calculations.
-   *
-   * @param mathString Mathematical String e.g 2+2*(9/3)
-   * @return result of calculation
-   */
   @POST
   @Path("/calculate")
-  public Response calculate(@FormParam("mathString") String mathString) {
-    String result;
-    int httpStatusCode = 200;
-    try {
-      logger.info("Received message at Form param:" + mathString);
-      result = calculatorService.calculateString(mathString);
-    } catch (InvalidMathStringException ex) {
-      result = ex.getMessage();
-      httpStatusCode = 400;
-    }
-    return Response.status(httpStatusCode)
+  public Response calculate(@FormParam("mathString") String mathString) throws
+                                                                        InvalidMathStringException {
+    logger.debug("Received message at Form param:" + mathString);
+    final String result = calculatorService.calculateString(mathString);
+    return Response.status(200)
         .entity(result)
         .type(MediaType.TEXT_PLAIN)
         .build();
   }
 
   @GET
-  @Path("/getAllPreviousOperations")
-  public Response getAllPreviousOperations() {
+  @Path("/getHistory")
+  public Response getHistory() {
     return Response.status(200)
         .entity(calculatorService.getOperations())
         .type(MediaType.TEXT_PLAIN)

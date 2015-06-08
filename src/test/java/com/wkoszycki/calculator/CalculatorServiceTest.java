@@ -50,4 +50,14 @@ public class CalculatorServiceTest {
   public void testNewLine() throws InvalidMathStringException {
     service.calculateString("23-4*(50/\\n8)+[43+{5]");
   }
+
+  @Test(expected = InvalidMathStringException.class)
+  public void testDivisionByZero() throws InvalidMathStringException {
+    service.calculateString("5/0");
+  }
+
+  @Test(expected = InvalidMathStringException.class)
+  public void testNestedDivisionByZero() throws InvalidMathStringException {
+    service.calculateString("5/(2-2)");
+  }
 }
