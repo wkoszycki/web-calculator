@@ -15,14 +15,14 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 @Path("calculator/v1.0")
-@RequestScoped
+//@RequestScoped
 public class CalculatorResource {
 
   private final Logger logger = LoggerFactory.getLogger(CalculatorService.class);
 
-  private final CalculatorService calculatorService;
+  private CalculatorService calculatorService;
 
-  @Inject
+    @Inject
   public CalculatorResource(CalculatorService calculatorService) {
     this.calculatorService = calculatorService;
   }

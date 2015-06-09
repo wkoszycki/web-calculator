@@ -13,7 +13,7 @@ import javax.enterprise.context.SessionScoped;
 import static com.wkoszycki.calculator.CalculatorValidator.isMathStringValid;
 
 @SessionScoped
-class CalculatorService implements Serializable {
+public class CalculatorService implements Serializable {
 
   private final List<String> operations = new ArrayList<>();
 
