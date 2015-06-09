@@ -15,14 +15,17 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 @Path("calculator/v1.0")
-//@RequestScoped
+@RequestScoped
 public class CalculatorResource {
 
   private final Logger logger = LoggerFactory.getLogger(CalculatorService.class);
 
+  @Inject
   private CalculatorService calculatorService;
 
-    @Inject
+  public CalculatorResource() {
+  }
+
   public CalculatorResource(CalculatorService calculatorService) {
     this.calculatorService = calculatorService;
   }
@@ -31,7 +34,7 @@ public class CalculatorResource {
   @Path("/calculate")
   public Response calculate(@FormParam("mathString") String mathString) throws
                                                                         InvalidMathStringException {
-    logger.debug("Received message at Form param:" + mathString);
+    logger.info("Received message at Form param:" + mathString);
     final String result = calculatorService.calculateString(mathString);
     return Response.status(200)
         .entity(result)
@@ -44,7 +47,7 @@ public class CalculatorResource {
   public Response getHistory() {
     return Response.status(200)
         .entity(calculatorService.getOperations())
-        .type(MediaType.TEXT_PLAIN)
+        .type(MediaType.APPLICATION_JSON)
         .build();
   }
 }
