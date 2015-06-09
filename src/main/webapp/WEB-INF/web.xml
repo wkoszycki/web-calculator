@@ -6,7 +6,6 @@
     <listener>
         <listener-class>org.jboss.weld.environment.servlet.Listener</listener-class>
     </listener>
-
     <servlet>
         <servlet-name>jersey-serlvet</servlet-name>
         <servlet-class>
@@ -26,5 +25,4 @@
         <servlet-name>jersey-serlvet</servlet-name>
         <url-pattern>/rs-api/*</url-pattern>
     </servlet-mapping>
-
 </web-app>

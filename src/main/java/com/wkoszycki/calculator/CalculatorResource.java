@@ -11,10 +11,10 @@ import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.core.MediaType;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
-@Path("calculator/v1.0")
+@Path("calculator")
 @RequestScoped
 public class CalculatorResource {
 
@@ -26,28 +26,28 @@ public class CalculatorResource {
   public CalculatorResource() {
   }
 
-  public CalculatorResource(CalculatorService calculatorService) {
+  protected CalculatorResource(CalculatorService calculatorService) {
     this.calculatorService = calculatorService;
   }
 
   @POST
-  @Path("/calculate")
+  @Path("/v1.0/calculate")
+  @Produces("application/json")
   public Response calculate(@FormParam("mathString") String mathString) throws
                                                                         InvalidMathStringException {
     logger.info("Received message at Form param:" + mathString);
     final String result = calculatorService.calculateString(mathString);
-    return Response.status(200)
+    return Response.status(Response.Status.OK)
         .entity(result)
-        .type(MediaType.TEXT_PLAIN)
         .build();
   }
 
   @GET
-  @Path("/getHistory")
+  @Path("/v1.0/history")
+  @Produces("application/json")
   public Response getHistory() {
-    return Response.status(200)
+    return Response.status(Response.Status.OK)
         .entity(calculatorService.getOperations())
-        .type(MediaType.APPLICATION_JSON)
         .build();
   }
 }
