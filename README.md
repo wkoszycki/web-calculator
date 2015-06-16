@@ -12,12 +12,8 @@ Functionality:
 
 4) Support displaying calculation history
 
-5) Calculate e^x integral*
+5) Calculate e^x integral* in asynchronous multi threading manner
 
-*This function should take as the input the following values:
-- The interval in which the integral should be calculated
-- Number of threads in which this simple equation should be calculated. Relaying on the assumption that calculating integral within the given interval is the perfect task for multitasking, each thread calculates individual sub-interval and after that all results are basically merged
-- Number of repeated calculations. In that field user can specify how many times the given task should be repeated. Each individual calculation should have separated order id
 
 Technologies:
 
