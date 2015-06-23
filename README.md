@@ -22,3 +22,17 @@ Frontend
 
 Backend
 -CDI,JAX-RS,
+
+
+How to run:
+================
+
+build with Maven :
+
+mvn package
+
+Download jetty-runner-8.1.9.v20130131.jar
+
+execute java -jar jetty-runner.jar web-calculator.war
+
+
