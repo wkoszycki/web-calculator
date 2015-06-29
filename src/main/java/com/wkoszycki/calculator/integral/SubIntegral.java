@@ -2,14 +2,22 @@ package com.wkoszycki.calculator.integral;
 
 import java.util.concurrent.Callable;
 
-public class SubIntegral implements Callable {
+public class SubIntegral implements Callable<Double> {
 
-  long startRange;
-  long endRange;
+  long element;
 
+  public SubIntegral(long element) {
+    this.element = element;
+  }
 
   @Override
-  public Object call() throws Exception {
-    return null;
+  public Double call() throws Exception {
+    return power(element + 1) - power(element);
   }
+
+
+  private double power(long element) {
+    return Math.pow(Math.E, element);
+  }
+
 }

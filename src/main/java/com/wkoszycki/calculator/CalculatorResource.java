@@ -2,10 +2,12 @@ package com.wkoszycki.calculator;
 
 import com.wkoszycki.calculator.exception.InvalidMathStringException;
 import com.wkoszycki.calculator.integral.DefiniteIntegralParameters;
-import com.wkoszycki.calculator.integral.IntegralService;
+import com.wkoszycki.calculator.integral.AsynchronousIntegralService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.concurrent.ExecutionException;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -48,9 +50,11 @@ public class CalculatorResource {
   @Path("/v1.0/integral/ex")
   @Produces("application/json")
   public Response calculateEtoXintegral(DefiniteIntegralParameters parameters) throws
-                                                                               InvalidMathStringException {
+                                                                               InvalidMathStringException,
+                                                                               ExecutionException,
+                                                                               InterruptedException {
 
-    final double integral = new IntegralService().calculateEtoX(parameters);
+    final double integral = new AsynchronousIntegralService().calculateEtoX(parameters);
     return Response.status(Response.Status.OK)
         .entity(integral)
         .build();
