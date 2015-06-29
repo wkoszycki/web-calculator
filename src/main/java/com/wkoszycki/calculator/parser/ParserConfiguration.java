@@ -1,5 +1,6 @@
 package com.wkoszycki.calculator.parser;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -10,23 +11,15 @@ class ParserConfiguration {
   private static final int DEFAULT_PRIORITY = 0;
   static String OPERATORS_TO_SPLIT;
   private static final Map<String, Integer> OPERATORS_WITH_PRIORITY;
-  private static final Set<String> BRACKETS_REPOSITORY;
+  private static final Set<String> OPEN_BRACKETS;
+  private static final Set<String> CLOSED_BRACKETS;
 
   static {
     OPERATORS_WITH_PRIORITY = new HashMap<>();
-    BRACKETS_REPOSITORY = new HashSet<>();
+    OPEN_BRACKETS = new HashSet<>(Arrays.asList("(", "{", "["));
+    CLOSED_BRACKETS = new HashSet<>(Arrays.asList(")", "}", "]"));
     fillOperatorsMap();
-    fillBracketsRepository();
     initializeOperatorsToSplit();
-  }
-
-  private static void fillBracketsRepository() {
-    BRACKETS_REPOSITORY.add("(");
-    BRACKETS_REPOSITORY.add(")");
-    BRACKETS_REPOSITORY.add("{");
-    BRACKETS_REPOSITORY.add("}");
-    BRACKETS_REPOSITORY.add("[");
-    BRACKETS_REPOSITORY.add("]");
   }
 
   private static void fillOperatorsMap() {
@@ -36,14 +29,16 @@ class ParserConfiguration {
     OPERATORS_WITH_PRIORITY.put("+", 1);
     OPERATORS_WITH_PRIORITY.put("-", 1);
   }
+
   private static void initializeOperatorsToSplit() {
+    Set<String> operators = new HashSet<>(OPEN_BRACKETS);
     StringBuilder sb = new StringBuilder();
-    Set<String> operators = new HashSet<>(BRACKETS_REPOSITORY);
+    operators.addAll(CLOSED_BRACKETS);
     operators.addAll(OPERATORS_WITH_PRIORITY.keySet());
     for (String operator : operators) {
       sb.append(operator);
     }
-    OPERATORS_TO_SPLIT=sb.toString();
+    OPERATORS_TO_SPLIT = sb.toString();
   }
 
 
@@ -56,16 +51,17 @@ class ParserConfiguration {
                                    : ParserConfiguration.DEFAULT_PRIORITY;
   }
 
-  static boolean isOperator(String character) {
-    return ParserConfiguration.OPERATORS_WITH_PRIORITY.containsKey(character);
+  static boolean isOperator(String token) {
+    return ParserConfiguration.OPERATORS_WITH_PRIORITY.containsKey(token);
   }
 
-  static boolean isOpenBracket(String currentChar) {
-    return "(".equals(currentChar);
+  static boolean isOpenBracket(String token) {
+    return ParserConfiguration.OPEN_BRACKETS.contains(token);
   }
 
-  static boolean isBracket(String c) {
-    return ParserConfiguration.BRACKETS_REPOSITORY.contains(c);
+  static boolean isBracket(String token) {
+    return ParserConfiguration.OPEN_BRACKETS.contains(token) || ParserConfiguration.CLOSED_BRACKETS
+        .contains(token);
   }
 
 }

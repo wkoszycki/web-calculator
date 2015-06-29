@@ -6,7 +6,7 @@ import java.util.Stack;
 
 import static com.wkoszycki.calculator.parser.ParserConfiguration.isOperator;
 
-public class PostfixEvaluator {
+class PostfixEvaluator {
 
   public Double evaluatePostfix(String[] postfix) {
     Stack<Double> operands = new Stack<>();

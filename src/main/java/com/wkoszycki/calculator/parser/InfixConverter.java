@@ -11,22 +11,24 @@ import static com.wkoszycki.calculator.parser.ParserConfiguration.isOpenBracket;
 import static com.wkoszycki.calculator.parser.ParserConfiguration.isOperator;
 
 
-public class InfixConverter {
+class InfixConverter {
 
   private final String mathString;
   private final Stack<String> operators;
   private final List<String> output = new ArrayList<>();
 
 
-  public InfixConverter(String mathString) {
+  InfixConverter(String mathString) {
     this.mathString = mathString;
     this.operators = new Stack<>();
   }
 
-  public String[] convertToPostfix() {
-    StringTokenizer tokenizer = new StringTokenizer(mathString, ParserConfiguration.OPERATORS_TO_SPLIT, true);
-    while (tokenizer.hasMoreTokens()){
-      String currentToken =tokenizer.nextToken();
+  String[] convertToPostfix() {
+    StringTokenizer
+        tokenizer =
+        new StringTokenizer(mathString, ParserConfiguration.OPERATORS_TO_SPLIT, true);
+    while (tokenizer.hasMoreTokens()) {
+      String currentToken = tokenizer.nextToken();
       if (isOperator(currentToken)) {
         if (!operators.isEmpty() && hasLastElementHigherPriority(currentToken,
                                                                  operators.lastElement())) {

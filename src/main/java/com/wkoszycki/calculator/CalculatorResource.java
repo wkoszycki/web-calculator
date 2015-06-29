@@ -1,6 +1,6 @@
 package com.wkoszycki.calculator;
 
-import com.wkoszycki.calculator.exception.InvalidMathStringException;
+import com.wkoszycki.calculator.exception.InvalidMathExpressionException;
 import com.wkoszycki.calculator.integral.AsynchronousIntegralParameters;
 
 import org.slf4j.Logger;
@@ -38,9 +38,9 @@ public class CalculatorResource {
   @Path("/v1.0/calculate")
   @Produces("application/json")
   public Response calculate(@FormParam("mathString") String mathString) throws
-                                                                        InvalidMathStringException {
+                                                                        InvalidMathExpressionException {
     logger.info("Received message at Form param:" + mathString);
-    final String result = calculatorService.calculateString(mathString);
+    final String result = calculatorService.calculateMathExpression(mathString);
     return Response.status(Response.Status.OK)
         .entity(result)
         .build();
@@ -49,7 +49,7 @@ public class CalculatorResource {
   @POST
   @Path("/v1.0/integral/ex")
   @Produces("application/json")
-  public Response calculateEtoXintegral(AsynchronousIntegralParameters parameters)
+  public Response calculateEtoXIntegral(AsynchronousIntegralParameters parameters)
       throws ExecutionException, InterruptedException {
     final Long operationId = calculatorService.calculateEtoX(parameters);
     return Response.status(Response.Status.OK)
@@ -73,7 +73,7 @@ public class CalculatorResource {
   @Produces("application/json")
   public Response getHistory() {
     return Response.status(Response.Status.OK)
-        .entity(calculatorService.getOperations())
+        .entity(calculatorService.getHistory())
         .build();
   }
 }

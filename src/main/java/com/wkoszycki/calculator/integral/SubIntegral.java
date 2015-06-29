@@ -2,9 +2,9 @@ package com.wkoszycki.calculator.integral;
 
 import java.util.concurrent.Callable;
 
-public class SubIntegral implements Callable<Double> {
+class SubIntegral implements Callable<Double> {
 
-  long element;
+  private final long element;
 
   public SubIntegral(long element) {
     this.element = element;

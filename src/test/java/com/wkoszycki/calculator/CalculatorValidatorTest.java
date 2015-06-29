@@ -13,7 +13,7 @@ public class CalculatorValidatorTest {
   public void testPositiveCase() {
     for (String positiveCase : TestUtil.positiveCases) {
       assertTrue("Failed for expression:" + positiveCase,
-                 CalculatorValidator.isMathStringValid(positiveCase));
+                 CalculatorValidator.isMathExpressionValid(positiveCase));
     }
   }
 
@@ -21,7 +21,7 @@ public class CalculatorValidatorTest {
   public void testNegativeCase() {
     for (String negativeCase : TestUtil.negativeCases) {
       assertFalse("Failed for expression:" + negativeCase,
-                  CalculatorValidator.isMathStringValid(negativeCase));
+                  CalculatorValidator.isMathExpressionValid(negativeCase));
     }
   }
 

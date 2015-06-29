@@ -1,6 +1,6 @@
 package com.wkoszycki.calculator;
 
-import com.wkoszycki.calculator.exception.InvalidMathStringException;
+import com.wkoszycki.calculator.exception.InvalidMathExpressionException;
 import com.wkoszycki.calculator.util.TestUtil;
 
 import org.junit.Before;
@@ -28,7 +28,7 @@ public class CalculatorResourceTest {
     }
   }
 
-  @Test(expected = InvalidMathStringException.class)
+  @Test(expected = InvalidMathExpressionException.class)
   public void testNegativeCases() {
     for (String negativeCase : TestUtil.negativeCases) {
       instance.calculate(negativeCase);

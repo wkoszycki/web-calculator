@@ -1,10 +1,9 @@
 package com.wkoszycki.calculator;
 
-import com.wkoszycki.calculator.exception.InvalidMathStringException;
+import com.wkoszycki.calculator.exception.InvalidMathExpressionException;
 import com.wkoszycki.calculator.integral.AsynchronousIntegralParameters;
 import com.wkoszycki.calculator.integral.AsynchronousIntegralService;
-import com.wkoszycki.calculator.parser.InfixConverter;
-import com.wkoszycki.calculator.parser.PostfixEvaluator;
+import com.wkoszycki.calculator.parser.ReversePolishNotationParser;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -17,27 +16,27 @@ import java.util.concurrent.Future;
 
 import javax.enterprise.context.SessionScoped;
 
-import static com.wkoszycki.calculator.CalculatorValidator.isMathStringValid;
+import static com.wkoszycki.calculator.CalculatorValidator.isMathExpressionValid;
 
 @SessionScoped
 class CalculatorService implements Serializable {
 
-  private final List<String> operations;
+  private final List<String> history;
   private final Map<Long, List<Future<Double>>> calculationOrders;
 
   CalculatorService() {
     calculationOrders = new HashMap<>();
-    operations = new ArrayList<>();
+    history = new ArrayList<>();
   }
 
-  public String calculateString(String mathString) throws InvalidMathStringException {
-    if (!isMathStringValid(mathString)) {
-      throw new InvalidMathStringException();
+  public String calculateMathExpression(String mathExpression) throws
+                                                               InvalidMathExpressionException {
+    if (!isMathExpressionValid(mathExpression)) {
+      throw new InvalidMathExpressionException();
     }
-    final String[] postfix = new InfixConverter(unifyBrackets(mathString))
-        .convertToPostfix();
-    final Double result = new PostfixEvaluator().evaluatePostfix(postfix);
-    operations.add(mathString);
+    final ReversePolishNotationParser parser = new ReversePolishNotationParser();
+    final Double result = parser.parseMathExpression(mathExpression);
+    history.add(mathExpression);
     if (isInteger(result)) {
       return String.valueOf(result.intValue());
     }
@@ -69,17 +68,8 @@ class CalculatorService implements Serializable {
     return input == Math.floor(input);
   }
 
-  private String unifyBrackets(String mathString) {
-    //TODO: Change it to Pattern Matcher to be more efficient.
-    return mathString
-        .replaceAll("\\{", "(")
-        .replaceAll("\\}", ")")
-        .replaceAll("\\[", "(")
-        .replaceAll("\\]", ")");
-  }
-
-  public List<String> getOperations() {
-    return operations;
+  List<String> getHistory() {
+    return history;
   }
 
 }

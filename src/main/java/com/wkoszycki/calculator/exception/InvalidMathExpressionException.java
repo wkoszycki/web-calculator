@@ -3,12 +3,13 @@ package com.wkoszycki.calculator.exception;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
 
-public class InvalidMathStringException extends WebApplicationException {
+public class InvalidMathExpressionException extends WebApplicationException {
 
-  public InvalidMathStringException() {
-    super(buildResponse("Math string is invalid that's all we know..."));
+  public InvalidMathExpressionException() {
+    super(buildResponse("Math expression is invalid that's all we know..."));
   }
-  public InvalidMathStringException(String message) {
+
+  public InvalidMathExpressionException(String message) {
     super(buildResponse(message));
   }
 

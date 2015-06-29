@@ -29,10 +29,9 @@ public class AsynchronousIntegralService {
 
   public List<Future<Double>> calculateEtoX(
       AsynchronousIntegralParameters asynchronousIntegralParameters)
-      throws InterruptedException, ExecutionException {
+      throws InterruptedException {
 
     final Set<SubIntegral> subIntegrals = prepareSubIntegrals(asynchronousIntegralParameters);
-
     int numberOfThreads = defineNumberOfThreads(asynchronousIntegralParameters);
     ExecutorService executor = Executors.newFixedThreadPool(numberOfThreads);
     return executor.invokeAll(subIntegrals);
@@ -43,7 +42,7 @@ public class AsynchronousIntegralService {
                                                                : asynchronousIntegralParameters.numberOfThreads;
   }
 
-  public Set<SubIntegral> prepareSubIntegrals(
+  Set<SubIntegral> prepareSubIntegrals(
       DefiniteIntegralParameters definiteIntegralParameters) {
     HashSet<SubIntegral> subIntegrals = new HashSet<>();
     log.log(Level.INFO, "Splitting integral from {0} to {1} for sub-tasks",

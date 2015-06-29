@@ -6,7 +6,7 @@ class CalculatorValidator {
 //TODO: Improve regex to match only numbers brackets and operators
   private static final Pattern LETTERS_OR_SPACES_PATTERN = Pattern.compile("[a-zA-Z||\\s]");
 
-  static boolean isMathStringValid(String mathString) {
+  static boolean isMathExpressionValid(String mathString) {
     return mathString != null
            && !containsLettersOrSpaces(mathString);
   }
