@@ -44,7 +44,7 @@ class CalculatorService implements Serializable {
   }
 
   public Long calculateEtoX(AsynchronousIntegralParameters parameters)
-      throws ExecutionException, InterruptedException {
+      throws InterruptedException {
     final List<Future<Double>>
         futures =
         new AsynchronousIntegralService().calculateEtoX(parameters);
