@@ -1,8 +1,7 @@
 package com.wkoszycki.calculator;
 
 import com.wkoszycki.calculator.exception.InvalidMathStringException;
-import com.wkoszycki.calculator.integral.DefiniteIntegralParameters;
-import com.wkoszycki.calculator.integral.AsynchronousIntegralService;
+import com.wkoszycki.calculator.integral.AsynchronousIntegralParameters;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +14,7 @@ import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
@@ -49,14 +49,22 @@ public class CalculatorResource {
   @POST
   @Path("/v1.0/integral/ex")
   @Produces("application/json")
-  public Response calculateEtoXintegral(DefiniteIntegralParameters parameters) throws
-                                                                               InvalidMathStringException,
-                                                                               ExecutionException,
-                                                                               InterruptedException {
-
-    final double integral = new AsynchronousIntegralService().calculateEtoX(parameters);
+  public Response calculateEtoXintegral(AsynchronousIntegralParameters parameters)
+      throws ExecutionException, InterruptedException {
+    final Long operationId = calculatorService.calculateEtoX(parameters);
     return Response.status(Response.Status.OK)
-        .entity(integral)
+        .entity(operationId)
+        .build();
+  }
+
+  @GET
+  @Path("/v1.0/integral/collect")
+  @Produces("application/json")
+  public Response collectOrder(@PathParam("id") Long id)
+      throws ExecutionException, InterruptedException {
+    final double calculationOrderResult = calculatorService.getCalculationOrderResult(id);
+    return Response.status(Response.Status.OK)
+        .entity(calculationOrderResult)
         .build();
   }
 

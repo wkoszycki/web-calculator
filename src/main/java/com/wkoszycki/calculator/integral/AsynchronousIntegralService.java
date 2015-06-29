@@ -12,15 +12,13 @@ import java.util.logging.Level;
 import lombok.extern.java.Log;
 
 @Log
-public class AsynchronousIntegralService implements IntegralService {
+public class AsynchronousIntegralService {
 
-  @Override
-  public double calculateEtoX(DefiniteIntegralParameters definiteIntegralParameters) {
+
+  public static double getResultFromTasks(List<Future<Double>> futures) {
     double result = 0;
     try {
-      final List<Future<Double>> futureResults
-          = calculateEtoX((AsynchronousIntegralParameters) definiteIntegralParameters);
-      for (Future<Double> subIntegralFuture : futureResults) {
+      for (Future<Double> subIntegralFuture : futures) {
         result += subIntegralFuture.get();
       }
     } catch (InterruptedException | ExecutionException e) {
