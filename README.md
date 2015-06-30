@@ -1,3 +1,9 @@
+Status:
+[![Build Status](https://travis-ci.org/wkoszycki/web-calculator.png?branch=master)](https://travis-ci.org/wkoszycki/web-calculator)
+
+[![Coverage Status](https://coveralls.io/repos/wkoszycki/web-calculator/badge.svg)](https://coveralls.io/r/wkoszycki/web-calculator)
+
+
 web-calculator
 ================
 Web calculator  based on rest API
