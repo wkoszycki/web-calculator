@@ -60,4 +60,24 @@ public class CalculatorServiceTest {
   public void testNestedDivisionByZero() throws InvalidMathExpressionException {
     service.calculateMathExpression("5/(2-2)");
   }
+
+  @Test(expected = InvalidMathExpressionException.class)
+  public void testMissingOpeningBracket() throws InvalidMathExpressionException {
+    service.calculateMathExpression("5/2-3)");
+  }
+
+  @Test(expected = InvalidMathExpressionException.class)
+  public void testMissingClosingBracket() throws InvalidMathExpressionException {
+    service.calculateMathExpression("5/(2-3");
+  }
+
+  @Test(expected = InvalidMathExpressionException.class)
+  public void testMissingOpeningSquareBracket() throws InvalidMathExpressionException {
+    service.calculateMathExpression("5/2-3]");
+  }
+
+  @Test(expected = InvalidMathExpressionException.class)
+  public void testMissingClosingSquareBracket() throws InvalidMathExpressionException {
+    service.calculateMathExpression("5/{[2-3");
+  }
 }

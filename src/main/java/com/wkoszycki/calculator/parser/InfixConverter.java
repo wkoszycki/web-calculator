@@ -1,5 +1,7 @@
 package com.wkoszycki.calculator.parser;
 
+import com.wkoszycki.calculator.exception.InvalidMathExpressionException;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -50,8 +52,12 @@ class InfixConverter {
   }
 
   private void popOperatorsFromStackTillOpenBracket() {
+
     while (!isOpenBracket(operators.peek())) {
       addElementToOutput(operators.pop());
+      if (operators.isEmpty()) {
+        throw new InvalidMathExpressionException("Opening bracket is missing");
+      }
     }
     operators.pop();
   }

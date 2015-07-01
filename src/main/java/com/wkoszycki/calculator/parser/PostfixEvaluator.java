@@ -1,6 +1,7 @@
 package com.wkoszycki.calculator.parser;
 
 import com.wkoszycki.calculator.exception.DivisionByZeroException;
+import com.wkoszycki.calculator.exception.InvalidMathExpressionException;
 
 import java.util.Stack;
 
@@ -17,7 +18,11 @@ class PostfixEvaluator {
         double firstOperand = operands.pop();
         operands.push(calculate(firstOperand, secondOperand, currentChar));
       } else {
-        operands.push(Double.parseDouble(currentChar));
+        try {
+          operands.push(Double.parseDouble(currentChar));
+        } catch (NumberFormatException e) {
+          throw new InvalidMathExpressionException("Closing bracket is missing");
+        }
       }
     }
     return operands.lastElement();
@@ -32,7 +37,7 @@ class PostfixEvaluator {
       case "*":
         return firstOperand * secondOperand;
       case "/":
-        if (secondOperand!=0){
+        if (secondOperand != 0) {
           return firstOperand / secondOperand;
         }
         throw new DivisionByZeroException();
